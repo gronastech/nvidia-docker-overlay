@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<!DOCTYPE repositories SYSTEM "/dtd/repositories.dtd">
+<repositories version="1.0">
+    <repo quality="experimental" status="unofficial">
+	<name>nvidia-docker-overlay</name>
+	<description>Gentoo ebuilds of the https://github.com/NVIDIA/nvidia-docker</description>
+	<homepage>https://github.com/gronastech/nvidia-docker-overlay</homepage>
+	<owner>
+	    <email>gronas.public@gmail.com</email>
+	    <name>Gronas Technologies</name>
+	</owner>
+	<source type="git">https://github.com/gronastech/nvidia-docker-overlay.git</source>
+    </repo>
+</repositories>
