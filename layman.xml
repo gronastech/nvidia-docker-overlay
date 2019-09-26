@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<layman>
+    <overlay type="git" src="https://github.com/gronastech/nvidia-docker-overlay.git" name="nvidia-docker-overlay">
+        <link>https://gronas.tech/</link>
+        <description>Gentoo ebuilds of the https://github.com/NVIDIA/nvidia-docker</description>
+    </overlay>
+</layman>
