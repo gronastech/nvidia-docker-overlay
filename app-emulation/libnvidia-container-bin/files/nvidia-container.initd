@@ -1,0 +1,21 @@
+#!/sbin/openrc-run
+# Distributed under the terms of the GNU General Public License v2
+
+name="nvidia-container setup"
+description="This script performs initialization of NVIDIA container stuff for lxd."
+
+depend() {
+    need lxd
+}
+
+start() {
+    ebegin "Initializing NVIDIA CUDA for containers..."
+    modprobe -f nvidia_uvm
+    # see https://github.com/NVIDIA/libnvidia-container/issues/3:
+    nvidia-container-cli -k -d /dev/null list > /dev/null 2>&1
+    eend 0
+}
+
+stop() {
+    return 0
+}
