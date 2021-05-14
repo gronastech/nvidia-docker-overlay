@@ -21,30 +21,25 @@ GITHUB_REPO="runc"
 GITHUB_USER="opencontainers"
 GITHUB_TAG="1.0.0-rc92" # August 6, 2020
 
-NV_GITHUB_REPO="nvidia-container-runtime"
+NV_GITHUB_RUNTIME_REPO="nvidia-container-runtime"
+NV_GITHUB_TOOLKIT_REPO="nvidia-container-toolkit"
 NV_GITHUB_USER="NVIDIA"
 NV_GITHUB_TAG="v3.4.1" # 2021
 
 SRC_URI="https://www.github.com/${GITHUB_USER}/${GITHUB_REPO}/archive/v${GITHUB_TAG}.tar.gz -> ${GITHUB_REPO}-${GITHUB_TAG}.tar.gz
-https://www.github.com/${NV_GITHUB_USER}/${NV_GITHUB_REPO}/archive/v${PV}.tar.gz -> ${NV_GITHUB_REPO}-${PV}.tar.gz"
+https://www.github.com/${NV_GITHUB_USER}/${NV_GITHUB_RUNTIME_REPO}/archive/v${PV}.tar.gz -> ${NV_GITHUB_RUNTIME_REPO}-${PV}.tar.gz
+https://www.github.com/${NV_GITHUB_USER}/${NV_GITHUB_TOOLKIT_REPO}/archive/v${PV}.tar.gz -> ${NV_GITHUB_RUNTIME_REPO}-${PV}.tar.gz"
 S=$WORKDIR/src/github.com/opencontainers/runc
 
 src_unpack() {
     unpack ${A}
     mkdir -p $WORKDIR/src/github.com/opencontainers
     mv "${WORKDIR}/${GITHUB_REPO}"-${GITHUB_TAG} $S || die
-    mv "${WORKDIR}/${NV_GITHUB_REPO}"-${PV} $WORKDIR/${NV_GITHUB_REPO} || die
-    cd $WORKDIR/$NV_GITHUB_REPO/toolkit/nvidia-container-toolkit || die
-    # GOPATH expects a "src", not a "vendor" directory:
-    mv vendor src || die
+    mv "${WORKDIR}/${NV_GITHUB_RUNTIME_REPO}"-${PV} $WORKDIR/${NV_GITHUB_RUNTIME_REPO} || die
 }
-
-#PATCHES=( "$FILESDIR/0001-Add-prestart-hook-nvidia-container-runtime-hook-to-t.patch" )
-PATCHES=( "$FILESDIR/add_prestart_hook.patch" )
 
 src_prepare() {
     default
-    cd $WORKDIR/$NV_GITHUB_REPO && eapply $FILESDIR/gentoo_video_group.patch
 }
 
 src_compile() {
@@ -60,8 +55,8 @@ src_compile() {
 
     # BEGIN nvidia-container-runtime-hook build:
 
-    cd $WORKDIR/$NV_GITHUB_REPO/toolkit/nvidia-container-toolkit || die
-    export GOPATH=`pwd`
+    #cd $WORKDIR/$NV_GITHUB_REPO/toolkit/nvidia-container-toolkit || die
+    #export GOPATH=`pwd`
     go build || die
 }
 
