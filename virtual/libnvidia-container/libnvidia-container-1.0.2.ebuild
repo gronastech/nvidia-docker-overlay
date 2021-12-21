@@ -7,4 +7,4 @@ SLOT="0"
 KEYWORDS="*"
 IUSE=""
 
-RDEPEND="|| ( app-emulation/libnvidia-container app-emulation/libnvidia-container-bin )"
+RDEPEND="|| ( app-containers/libnvidia-container app-containers/libnvidia-container-bin )"

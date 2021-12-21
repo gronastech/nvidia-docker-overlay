@@ -19,10 +19,10 @@ layman -f -o https://raw.githubusercontent.com/gronastech/nvidia-docker-overlay/
 
 Packages that need to be installed:
 ```
-app-emulation/nvidia-docker
-app-emulation/nvidia-container-runtime
-app-emulation/nvidia-container-toolkit
-app-emulation/libnvidia-container-bin
+app-containers/nvidia-docker
+app-containers/nvidia-container-runtime
+app-containers/nvidia-container-toolkit
+app-containers/libnvidia-container-bin
 virtual/libnvidia-container
 ```
 

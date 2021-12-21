@@ -13,8 +13,8 @@ SLOT="0"
 
 DEPEND=">=dev-lang/go-1.15:="
 RDEPEND="
-	>=app-emulation/nvidia-container-toolkit-1.5.0
-	app-emulation/runc
+	>=app-containers/nvidia-container-toolkit-1.5.0
+	app-containers/runc
 "
 
 TARBALL_PV=${PV}

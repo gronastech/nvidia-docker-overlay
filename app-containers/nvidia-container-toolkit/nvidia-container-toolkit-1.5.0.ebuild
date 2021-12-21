@@ -13,7 +13,7 @@ SLOT="0"
 
 DEPEND=">=dev-lang/go-1.15:="
 RDEPEND="virtual/libnvidia-container
-	!<app-emulation/nvidia-container-runtime-3.5.0"
+	!<app-containers/nvidia-container-runtime-3.5.0"
 
 TARBALL_PV=${PV}
 
